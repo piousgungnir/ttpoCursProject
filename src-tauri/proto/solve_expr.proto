@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package solve_expr;
+
+service Calculator {
+  rpc solve_expr (Expression) returns (ExpressionResult) {}
+}
+
+message Expression {
+  string value = 1;
+  string symbols = 2;
+  enum Type {
+    equation_algebraically = 0;
+    equation_numerically = 1;
+    roots_of_polynomial = 2;
+  }
+  Type type = 3;
+}
+
+message ExpressionResult {
+  string value = 1;
+}
